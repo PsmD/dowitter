@@ -12,7 +12,7 @@ const postSlice = createSlice({
 		},
 		editPost: (state, action) => {
 			const { id, title, text } = action.payload;
-			const existingPost = state.find((post) => post.id === id);
+			const existingPost = state.find((post) => post.id === Number(id));
 			if (existingPost) {
 				existingPost.title = title;
 				existingPost.text = text;
