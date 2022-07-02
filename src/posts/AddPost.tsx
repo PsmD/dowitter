@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addPost } from "./postSlice";
+import styled from "styled-components";
 
 const AddPost = () => {
 	const dispatch = useDispatch();
@@ -24,16 +25,29 @@ const AddPost = () => {
 	};
 
 	return (
-		<div>
+		<AddPostBox>
 			<input
 				value={values.title}
+				placeholder="Title"
 				onChange={(e) => setValues({ ...values, title: e.target.value })}
 			/>
 			<br />
-			<input value={values.text} onChange={(e) => setValues({ ...values, text: e.target.value })} />
-			<button onClick={handleAddPost}>Submit</button>
-		</div>
+			<input
+				value={values.text}
+				placeholder="Text"
+				onChange={(e) => setValues({ ...values, text: e.target.value })}
+			/>
+			<button style={{ marginTop: "15px" }} onClick={handleAddPost}>
+				Submit
+			</button>
+		</AddPostBox>
 	);
 };
 
 export default AddPost;
+
+const AddPostBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
